@@ -4,6 +4,7 @@ RUN apt update && apt install --yes \
       wget \
       build-essential \
       git \
+      zlib1g-dev \
       python3
 
 RUN git clone https://github.com/rrwick/Unicycler.git /opt/unicycler && \
