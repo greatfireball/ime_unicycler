@@ -19,10 +19,11 @@ RUN wget -O spades.tar.gz \
     rm spades.tar.gz
 ENV PATH=/opt/SPAdes-3.11.1-Linux/bin/:"$PATH"
 
-
-RUN git clone https://github.com/rrwick/Unicycler.git /opt/unicycler && \
+ENV PYTHONPATH=/opt/lib/python3.5/site-packages/
+ENV PATH=/opt/bin/:"$PATH"
+RUN git clone --branch v0.4.4 https://github.com/rrwick/Unicycler.git /opt/unicycler && \
     cd /opt/unicycler && \
-    python3 setup.py install
+    python3 setup.py install --prefix=/opt/
 
 VOLUME /data
 WORKDIR /data
