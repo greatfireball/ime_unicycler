@@ -7,6 +7,7 @@ RUN apt update && apt install --yes \
       zlib1g-dev \
       python3-setuptools \
       ncbi-blast+ \
+      bowtie2 \
       python3
 
 RUN git clone https://github.com/rrwick/Unicycler.git /opt/unicycler && \
