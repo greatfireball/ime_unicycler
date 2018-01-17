@@ -3,7 +3,9 @@ FROM ubuntu:xenial
 RUN apt update && apt install --yes \
       wget \
       build-essential \
-      git
+      git \
+      python3
+
 
 VOLUME /data
 WORKDIR /data
