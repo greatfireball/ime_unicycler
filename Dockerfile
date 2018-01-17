@@ -9,6 +9,7 @@ RUN apt update && apt install --yes \
       ncbi-blast+ \
       bowtie2 \
       samtools \
+      openjdk-8-jre-headless \
       python3
 
 RUN git clone https://github.com/rrwick/Unicycler.git /opt/unicycler && \
