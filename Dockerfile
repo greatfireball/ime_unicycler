@@ -19,6 +19,18 @@ RUN wget -O spades.tar.gz \
     rm spades.tar.gz
 ENV PATH=/opt/SPAdes-3.11.1-Linux/bin/:"$PATH"
 
+RUN apt install --yes \
+        mummer \
+	python-numpy \
+	python-matplotlib \
+	time && \
+    git clone --branch 0.5.0 https://github.com/isovic/racon.git racon && \
+    cd racon && \
+    make modules && \
+    make tools && \
+    make -j
+ENV PATH=/opt/racon/bin/:"$PATH"
+
 ENV PYTHONPATH=/opt/lib/python3.5/site-packages/
 ENV PATH=/opt/bin/:"$PATH"
 RUN git clone --branch v0.4.4 https://github.com/rrwick/Unicycler.git /opt/unicycler && \
