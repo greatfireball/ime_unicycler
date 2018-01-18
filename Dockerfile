@@ -8,8 +8,9 @@ RUN apt update && apt install --yes \
       python3-setuptools \
       ncbi-blast+ \
       bowtie2 \
-      samtools \
       openjdk-8-jre-headless \
+      libncurses5-dev \
+      libbz2-dev \
       python3
 
 WORKDIR /opt
@@ -18,6 +19,16 @@ RUN wget -O spades.tar.gz \
     tar xvzf spades.tar.gz && \
     rm spades.tar.gz
 ENV PATH=/opt/SPAdes-3.11.1-Linux/bin/:"$PATH"
+
+RUN wget https://github.com/samtools/samtools/releases/download/1.4.1/samtools-1.4.1.tar.bz2 && \
+    tar xjf samtools-1.4.1.tar.bz2 && \
+    cd samtools-1.4.1 && \
+    ./configure && \
+    make && \
+    make check && \
+    make install && \
+    cd .. && \
+    rm -rf samtools-1.4.1 samtools-1.4.1.tar.bz2
 
 RUN apt install --yes \
         mummer \
