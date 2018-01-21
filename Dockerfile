@@ -11,6 +11,7 @@ RUN apt update && apt install --yes \
       openjdk-8-jre-headless \
       libncurses5-dev \
       libbz2-dev \
+      liblzma-dev \
       python3
 
 WORKDIR /opt
