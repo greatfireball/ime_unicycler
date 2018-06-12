@@ -1,4 +1,5 @@
-FROM ubuntu:xenial
+ARG osversion=xenial
+FROM ubuntu:${osversion}
 
 RUN apt update && apt install --yes \
       wget \
