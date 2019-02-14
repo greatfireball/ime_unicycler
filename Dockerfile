@@ -35,15 +35,15 @@ RUN wget -O spades.tar.gz \
     rm spades.tar.gz
 ENV PATH=/opt/SPAdes-3.13.0-Linux/bin/:"$PATH"
 
-RUN wget https://github.com/samtools/samtools/releases/download/1.4.1/samtools-1.4.1.tar.bz2 && \
-    tar xjf samtools-1.4.1.tar.bz2 && \
-    cd samtools-1.4.1 && \
+RUN wget -O samtools.tar.bz2 https://github.com/samtools/samtools/releases/download/1.9/samtools-1.9.tar.bz2 && \
+    tar xjf samtools.tar.bz2 && \
+    cd samtools-1.9 && \
     ./configure && \
     make && \
     make check && \
     make install && \
     cd .. && \
-    rm -rf samtools-1.4.1 samtools-1.4.1.tar.bz2
+    rm -rf samtools-1.9*
 
 RUN apt install --yes \
         mummer \
