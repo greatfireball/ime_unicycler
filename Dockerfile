@@ -80,5 +80,7 @@ RUN git clone --branch v0.4.4 https://github.com/rrwick/Unicycler.git /opt/unicy
     cd /opt/unicycler && \
     python3 setup.py install --prefix=/opt/
 
+ENTRYPOINT ["unicycler"]
+
 VOLUME /data
 WORKDIR /data
