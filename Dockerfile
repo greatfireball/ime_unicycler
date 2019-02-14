@@ -35,6 +35,7 @@ RUN wget -O spades.tar.gz \
     rm spades.tar.gz
 ENV PATH=/opt/SPAdes-3.13.0-Linux/bin/:"$PATH"
 
+WORKDIR /opt
 RUN wget -O samtools.tar.bz2 https://github.com/samtools/samtools/releases/download/1.9/samtools-1.9.tar.bz2 && \
     tar xjf samtools.tar.bz2 && \
     cd samtools-1.9 && \
@@ -45,16 +46,23 @@ RUN wget -O samtools.tar.bz2 https://github.com/samtools/samtools/releases/downl
     cd .. && \
     rm -rf samtools-1.9*
 
+WORKDIR /opt
 RUN apt install --yes \
+        cmake \
         mummer \
 	python-numpy \
 	python-matplotlib \
 	time && \
-    git clone --branch 0.5.0 https://github.com/isovic/racon.git racon && \
-    cd racon && \
-    make modules && \
-    make tools && \
-    make -j
+    wget -O racon.tar.gz https://github.com/isovic/racon/releases/download/1.3.2/racon-v1.3.2.tar.gz && \
+    tar xzf racon.tar.gz && \
+    cd racon-v1.3.2/ && \
+    mkdir build && cd build && \
+    cmake -DCMAKE_BUILD_TYPE=Release -Dracon_build_tests=ON .. && \
+    make && \
+    bin/racon_test && \
+    make install && \
+    cd /opt && rm -rf racon*
+
 ENV PATH=/opt/racon/bin/:"$PATH"
 
 RUN mkdir pilon-1.22 && \
