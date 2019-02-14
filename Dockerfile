@@ -76,7 +76,7 @@ ENV PATH=/opt/pilon-1.23/:"$PATH"
 
 ENV PYTHONPATH=/opt/lib/python3.5/site-packages/
 ENV PATH=/opt/bin/:"$PATH"
-RUN git clone --branch v0.4.5 https://github.com/rrwick/Unicycler.git /opt/unicycler && \
+RUN git clone --branch v0.4.6 https://github.com/rrwick/Unicycler.git /opt/unicycler && \
     cd /opt/unicycler && \
     python3 setup.py install --prefix=/opt/
 
