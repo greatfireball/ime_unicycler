@@ -65,13 +65,14 @@ RUN apt install --yes \
 
 ENV PATH=/opt/racon/bin/:"$PATH"
 
-RUN mkdir pilon-1.22 && \
-    cd pilon-1.22 && \
-    wget https://github.com/broadinstitute/pilon/releases/download/v1.22/pilon-1.22.jar && \
-    ln -s pilon-1.22.jar pilon.jar && \
-    bash -c 'echo -e "#!/bin/bash\njava -Xmx128G -jar /opt/pilon-1.22/pilon.jar $@" > pilon' && \
+WORKDIR /opt
+RUN mkdir pilon-1.23 && \
+    cd pilon-1.23 && \
+    wget https://github.com/broadinstitute/pilon/releases/download/v1.23/pilon-1.23.jar && \
+    ln -s pilon-1.23.jar pilon.jar && \
+    bash -c 'echo -e "#!/bin/bash\njava -Xmx128G -jar /opt/pilon-1.23/pilon.jar $@" > pilon' && \
     chmod +x pilon
-ENV PATH=/opt/pilon-1.22/:"$PATH"
+ENV PATH=/opt/pilon-1.23/:"$PATH"
 
 ENV PYTHONPATH=/opt/lib/python3.5/site-packages/
 ENV PATH=/opt/bin/:"$PATH"
