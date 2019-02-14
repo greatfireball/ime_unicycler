@@ -30,10 +30,10 @@ RUN apt update && apt install --yes \
 
 WORKDIR /opt
 RUN wget -O spades.tar.gz \
-        http://spades.bioinf.spbau.ru/release3.11.1/SPAdes-3.11.1-Linux.tar.gz && \
+        http://cab.spbu.ru/files/release3.13.0/SPAdes-3.13.0-Linux.tar.gz && \
     tar xvzf spades.tar.gz && \
     rm spades.tar.gz
-ENV PATH=/opt/SPAdes-3.11.1-Linux/bin/:"$PATH"
+ENV PATH=/opt/SPAdes-3.13.0-Linux/bin/:"$PATH"
 
 RUN wget https://github.com/samtools/samtools/releases/download/1.4.1/samtools-1.4.1.tar.bz2 && \
     tar xjf samtools-1.4.1.tar.bz2 && \
