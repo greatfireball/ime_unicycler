@@ -22,10 +22,13 @@ Just provide all required parameters via command line.
 Default working directory is `/data`.
 Therefore, input data should be mounted using `/data` volume.
 
-Running the command to run unicycler on local files `localfile_1.fq` and `localfile_2.fq` in the current folder:
+Running the command to run unicycler on its sample files in the current folder:
 
 ```
-docker run --rm -it -v $PWD:/data greatfireball/ime_unicycler 
+docker run --rm -it -v $PWD:/data greatfireball/ime_unicycler:v0.4.4 \
+   -1 /opt/unicycler/sample_data/short_reads_1.fastq.gz \
+   -2 /opt/unicycler/sample_data/short_reads_2.fastq.gz \
+   -o /data/test-run
 ```
 
 ## Releases
